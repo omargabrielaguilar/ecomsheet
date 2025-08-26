@@ -11,8 +11,8 @@ class ProductVariant extends Model
     /** @use HasFactory<\Database\Factories\ProductVariantFactory> */
     use HasFactory;
 
-    // public function products(): BelongsTo
-    // {
-    //     return $this->belongsTo(Product::class);
-    // }
+    public function products(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
