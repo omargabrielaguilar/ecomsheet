@@ -1,25 +1,25 @@
 <?php
 
-namespace database\factories;
+namespace Database\Factories;
 
-use illuminate\database\eloquent\factories\factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \illuminate\database\eloquent\factories\factory<\app\models\product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class productfactory extends factory
+class ProductFactory extends Factory
 {
     /**
-     * define the model's default state.
+     * Define the model's default state.
      *
      * @return array<string, mixed>
      */
     public function definition(): array
     {
         return [
-            'name' => $this->faker->randomelement(['abc', 'dfg', 'blanket', 'sweater']),
+            'name' => $this->faker->randomElement(['abc', 'dfg', 'blanket', 'Sweater']),
             'description' => $this->faker->paragraph(2),
-            'price' => $this->faker->numberbetween(5_00, 45_00),
+            'price' => $this->faker->numberBetween(5_00, 45_00),
         ];
     }
 }
