@@ -1,3 +1,7 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    @foreach ($this->products as $product)
+        <div>
+            {{ $product->name }}
+        </div>
+    @endforeach
 </div>
