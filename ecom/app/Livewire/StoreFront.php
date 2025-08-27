@@ -8,6 +8,6 @@ class StoreFront extends Component
 {
     public function render()
     {
-        return view('livewire.store-front');
+        return view('livewire.store-front')->layout('layouts.guest');
     }
 }
