@@ -22,7 +22,9 @@
 <body>
     <div class="font-sans text-gray-900 antialiased">
         @include('navigation-menu')
-        {{ $slot }}
+        <main class="max-w-4xl mx-auto mt-12">
+            {{ $slot }}
+        </main>
     </div>
 
     @livewireScripts
