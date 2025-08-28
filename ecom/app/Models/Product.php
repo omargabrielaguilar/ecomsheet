@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use InvalidArgumentException;
 
 class Product extends Model
 {
@@ -14,6 +16,16 @@ class Product extends Model
     public function variants(): HasMany
     {
         return $this->hasMany(ProductVariant::class);
+    }
+
+    /**
+     * @return HasOne<Image, Product>
+     *
+     * @throws InvalidArgumentException
+     */
+    public function image()
+    {
+        return $this->hasOne(Image::class)->ofMany('featured', 'max');
     }
 
     public function images(): HasMany
