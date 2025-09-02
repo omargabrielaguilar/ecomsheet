@@ -2,27 +2,29 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use InvalidArgumentException;
+use Money\Currency;
+use Money\Money;
 
 class Product extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
+
+    protected function price(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => new Money($value, new Currency('PEN'))
+        );
+    }
 
     public function variants(): HasMany
     {
         return $this->hasMany(ProductVariant::class);
     }
 
-    /**
-     * @return HasOne<Image, Product>
-     *
-     * @throws InvalidArgumentException
-     */
     public function image()
     {
         return $this->hasOne(Image::class)->ofMany('featured', 'max');
